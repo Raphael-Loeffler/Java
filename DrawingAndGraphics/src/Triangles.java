@@ -7,10 +7,12 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Triangles {
 
     public static void drawImage(Graphics graphics){
+        int size = 16;
+        size++;
         int[] x = {WIDTH / 2, WIDTH / 2 - 10, WIDTH / 2 + 10};
         int[] y = {10, 27, 27};
-        for (int j = 0; j < 15; j++) {
-            for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < size + 1; j++) {
+            for (int i = 0; i < (size - j) / 2; i++) {
                 drawTriangle(x, y, 3, graphics);
                 y[0] += 17 * 2;
                 y[1] += 17 * 2;
@@ -19,6 +21,29 @@ public class Triangles {
             x[0] += 10;
             x[1] += 10;
             x[2] += 10;
+            y[0] = 10;
+            y[1] = 27;
+            y[2] = 27;
+            y[0] += (j + 1) * 17;
+            y[1] += (j + 1) * 17;
+            y[2] += (j + 1) * 17;
+        }
+        x[0] = WIDTH / 2;
+        x[1] = WIDTH / 2 - 10;
+        x[2] = WIDTH / 2 + 10;
+        y[0] = 10;
+        y[1] = 27;
+        y[2] = 27;
+        for (int j = 0; j < size; j++) {
+            for (int i = 0; i < (size - j) / 2; i++) {
+                drawTriangle(x, y, 3, graphics);
+                y[0] += 17 * 2;
+                y[1] += 17 * 2;
+                y[2] += 17 * 2;
+            }
+            x[0] -= 10;
+            x[1] -= 10;
+            x[2] -= 10;
             y[0] = 10;
             y[1] = 27;
             y[2] = 27;

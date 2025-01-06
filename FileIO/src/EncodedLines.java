@@ -15,17 +15,27 @@ public class EncodedLines {
         // where you saved it on your computer.
         // You can find the source file in a link next to this exercise.
         // You have to figure out the encryption logic by yourself.
-        decryptEncoded("files/decryptAscii");
+        decryptEncoded("files/decryptShiftedChars.txt");
     }
     public static void decryptEncoded(String filename) {
         try {
             List<String> content = Files.readAllLines(Paths.get(filename));
-            for (String s : content) {
-                String[] split = s.split("");
-                //for (int j = 0; j < split.length; j++) {
-                    //System.out.println(split[i].toCharArray());
-                //}
+            for (int i = 0; i < content.size(); i++) {
+                String[] characters = content.get(i).split("");
+                if (!content.get(i).isEmpty()) {
+                    for (int j = 0; j < characters.length; j++) {
+                        if (characters[j].hashCode() != 32) {
+                            int hashValue = characters[j].hashCode() - 1;
+                            characters[j] = Character.toString((char) hashValue);
+                        }
+                    }
+                }
+                content.set(i, "");
+                for (String character : characters) {
+                    content.set(i, content.get(i) + character);
+                }
             }
+            System.out.println(content);
         } catch (IOException e) {
             System.out.println("Could not find the file");
         }
