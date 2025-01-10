@@ -16,8 +16,8 @@ public class LicencePlate {
             String input = scanner.nextLine();
             List<String> wordsFromFile = Files.readAllLines(Paths.get("files/words.txt"));
             List<String> words = new ArrayList<>();
-            for (String word: wordsFromFile) {
-                words.addAll(Arrays.asList(word.split(" ")));
+            for (String line: wordsFromFile) {
+                words.addAll(Arrays.asList(line.split("\t")));
             }
             System.out.println(words);
         } catch (IOException e) {
