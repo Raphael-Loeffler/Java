@@ -19,14 +19,23 @@ public class MaxSum {
         // 1 + 2 + 4 + 5 = 12
         // 1 + 3 + 4 + 5 = 13
         // 2 + 3 + 4 + 5 = 14
+        System.out.println(maxSum(new int[]{1, 2, 2, 5, 5}));
     }
     public static int maxSum(int[] arr) {
-        if (arr.length == 4) {
-
+        if (arr.length < 2) {
+            return 0;
         } else {
-            //return maxFinder(arr) + maxSum();
+            List<Integer> list = new ArrayList<>();
+            for (int i: arr) {
+                list.add(i);
+            }
+            list.remove((Object) maxFinder(arr));
+            int[] out = new int[list.size()];
+            for (int i = 0; i < out.length; i++) {
+                out[i] = list.get(i);
+            }
+            return maxFinder(arr) + maxSum(out);
         }
-        return -1;
     }
     public static int maxFinder(int[] arr) {
         List<Integer> list = new ArrayList<>();
