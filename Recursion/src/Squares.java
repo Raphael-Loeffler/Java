@@ -8,6 +8,7 @@ public class Squares {
     public static void drawImage(Graphics graphics) {
         drawSquares(WIDTH / 2, HEIGHT / 2, WIDTH, graphics);
     }
+
     public static void drawSquares(int x, int y, int size, Graphics graphics) {
         graphics.drawLine(x - size / 6, y - size / 2, x - size / 6, y + size / 2);
         graphics.drawLine(x + size / 6, y - size / 2, x + size / 6, y + size / 2);
